@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hello, NexT">
+  <meta name="keywords" content="Linux,C语言,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="感觉好多东西要学呀呀！！">
+<meta name="description" content="个人关于C语言执行过程的一点理解">
+<meta name="keywords" content="Linux,C语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库（三）：关系数据库">
-<meta property="og:url" content="http://yoursite.com/2019/03/17/数据库（三）：关系数据库/index.html">
+<meta property="og:title" content="浅析LinuxC语言的运行过程">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/浅析LinuxC语言的运行过程/index.html">
 <meta property="og:site_name" content="不负初心">
-<meta property="og:description" content="感觉好多东西要学呀呀！！">
+<meta property="og:description" content="个人关于C语言执行过程的一点理解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-17T10:37:47.521Z">
+<meta property="og:updated_time" content="2019-03-17T13:28:47.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库（三）：关系数据库">
-<meta name="twitter:description" content="感觉好多东西要学呀呀！！">
+<meta name="twitter:title" content="浅析LinuxC语言的运行过程">
+<meta name="twitter:description" content="个人关于C语言执行过程的一点理解">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/17/数据库（三）：关系数据库/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/17/浅析LinuxC语言的运行过程/">
 
 
 
 
 
-  <title>数据库（三）：关系数据库 | 不负初心</title>
+  <title>浅析LinuxC语言的运行过程 | 不负初心</title>
   
 
 
@@ -323,7 +324,7 @@ function setSidebarMarginTop (headerOffset) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/数据库（三）：关系数据库/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/浅析LinuxC语言的运行过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LOONG">
@@ -340,7 +341,7 @@ function setSidebarMarginTop (headerOffset) {
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库（三）：关系数据库</h1>
+          <h1 class="post-title" itemprop="name headline">浅析LinuxC语言的运行过程</h1>
         
 
         <div class="post-meta">
@@ -352,7 +353,7 @@ function setSidebarMarginTop (headerOffset) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T18:37:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T21:25:38+08:00">
                 2019-03-17
               </time>
             
@@ -362,6 +363,28 @@ function setSidebarMarginTop (headerOffset) {
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LinuxC语言执行过程/" itemprop="url" rel="index">
+                    <span itemprop="name">LinuxC语言执行过程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -384,7 +407,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  4.3k
                 </span>
               
 
@@ -400,12 +423,16 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  19
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  个人关于C语言执行过程的一点理解
+              </div>
           
 
         </div>
@@ -421,7 +448,291 @@ function setSidebarMarginTop (headerOffset) {
       
 
       
-        
+        <p>一）、Linux中的程序运行过程。<br>1、在使用gcc -g -Wall <strong>.c -o </strong> -v命令后：<br>    -g：可以在可执行文件里面添加调试信息<br>    -Wall：W是警告的意思，all则是所有，因此这条语句可以帮助显示所有警            告信息<br>    -v:这条语句可以显示在编译时的所有信息<br>    下面是执行命令后显示的基础信息：包括执行编译的版本信息以及进行库函数的搜索信息</p>
+<p>2、在使用readelf语句后，我们查看了3-1可执行文件的内部信息</p>
+<p>ＥＬＦ信息：采用小端方式存储、文件为可执行文件、入口地址                0x8048310、采用系统版本是ＩＮＴＥＬ　８０３８６。<br>3、在使用strace后可以跟踪运行情况，由此知道我们是通过一个叫做write的函数来打印信息到显示器上的，只不过C语言通过封装让我们使用了printf这样一个功能强大的函数。运行时的步骤：execve函数就是派生进程的系统函数,brk为中断一个任务，mmap2：内存映射（在阅读了程序员的自我修养后对这个也有了初步的理解）。中断当前正在运行的程序，保存被中断程序的断点信息（当前的寄存器内容，cache的内容），写入内存，由操作系统为将要运行的程序分配资源，操作系统自我中断，将要运行程序开始工作。</p>
+<p>二）、验证Ｃ语言执行过程是否从main函数开始。ld为linux系统默认的运行链接器，其运行由系统定义的脚本规定。<br>通过执行-v指令以及查阅资料理解了以下结论：<br>结论：<br>1．可执行文件中，除了用户自定义的代码之外，还需首先加载库函数作为运行的软件环境基础。<br>2．在linux的当下版本中，可执行文件中仅仅包含相关库的路径，而具体库文件的加载是在程序运行时，由ld加载器根据事先由系统规定的脚本临时装入内存。<br>3．这种运行方式成为运行时动态链接。<br>１、before main函数前缀的含义<br>在查询了资料后初步理解了<strong>attribute</strong> 机制：<strong>attribute</strong> 是GCC的一个特性，它可以设置函数属性（Function Attribute）、变量属性（Variable Attribute）和类型属性（Type Attribute）。在本次实验中，设置的就是函数属性，constructor属性的具体相当于c++里面的构造函数，它会在main函数执行前执行，因此在实验的时候会先输出这个属性定义下的函数显示，在使用constructor时，<br>1）、相同文件中的执行顺序与函数在文件中的先后顺序一致<br>2）、不同源文件中在后面编译的源文件中的该函数反而先执行<br>与之对应的还有destructor，执行顺序或许可以理解为虚构函数（功能不一样），在main函数执行之后进行执行。<br>2、分析-v选项中显示的信息，说明本程序在链接时具体添加了哪些库函数？库名称以及用途。</p>
+<pre><code>Using built-in specs.：编译链接详细信息
+
+COLLECT_GCC=gcc：编译时调用的总调度程序
+
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/i686-linux-gnu/5/lto-wrapper：系统目录
+
+Target: i686-linux-gnu：可执行文件的运行环境，cpui686　操作系统为：Ｌｉｎｕｘ，gnu:gcc的开发组织。
+</code></pre><p>配置信息：</p>
+<p>头文件包含：</p>
+<p>#include “…” search starts here:到程序员自己指定的路径搜索</p>
+<p>#include &lt;…&gt; search starts here:到系统指定的路径下搜索</p>
+<pre><code>/usr/lib/gcc/i686-linux-gnu/5/include
+/usr/local/include
+/usr/lib/gcc/i686-linux-gnu/5/include-fixed
+/usr/include/i386-linux-gnu
+/usr/include
+</code></pre><p>End of search list.搜索结束</p>
+<p>汇编：</p>
+<pre><code>GGC heuristics: --param ggc-min-expand=98 --param ggc-min-heapsize=127604
+Compiler executable checksum: aa6acd9da3973c4e062850ebfea36a8e
+COLLECT_GCC_OPTIONS=&apos;-o&apos; &apos;test&apos; &apos;-v&apos; &apos;-mtune=generic&apos; &apos;-march=i686&apos;
+ as -v --32 -o /tmp/ccE4Ef0F.o /tmp/ccy7NTqq.s
+</code></pre><p>链接：</p>
+<pre><code>COLLECT_GCC_OPTIONS=&apos;-o&apos; &apos;test&apos; &apos;-v&apos; &apos;-mtune=generic&apos; &apos;-march=i686&apos;
+ /usr/lib/gcc/i686-linux-gnu/5/collect2 -plugin /usr/lib/gcc/i686-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/i686-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cco9llZV.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o test /usr/lib/gcc/i686-linux-gnu/5/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/5/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/i686-linux-gnu/5 -L/usr/lib/gcc/i686-linux-gnu/5/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/5/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/5/../../.. /tmp/ccE4Ef0F.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i686-linux-gnu/5/crtend.o /usr/lib/gcc/i686-linux-gnu/5/../../../i386-linux-gnu/crtn.o
+</code></pre><p>库函数：<br>liblto_plugin.so ：动态链接库<br>crt1.o crti.o crtbegin.o crtend.o crtn.o<br>在查阅了资料后，找到了这几个库函数的作用：<br>crt是c runtime 的缩写,用于执行进入main之前的初始化和退出main之后的扫尾工作。<br>    crt1.o, crti.o, crtbegin.o, crtend.o, crtn.o 等目标文件和daemon.o（由我们自己的C程序文件产生）链接成一个执行文件。前面这5个目标文件的作用分别是启动、初始化、构造、析构和结束，它们 通常会被自动链接到应用程序中So,在标准的linux平台下,link的顺序是:ld crt1.o crti.o [user_objects] [system_libraries] crtn.ocrt1.o中包含程 序的入口函数_start以及两个未定义的符号<strong>libc_start_main和main，由_start负责调用</strong>libc_start_main初始化libc，然后调用我们源代码中定义的main函数；另外，由于类似于全局静态对象这样的代码需要在main函 数之前执行，crti.o和crtn.o负责辅助启动这些代码。<br>另外，Gcc中同样也有crtbegin.o和crtend.o两个文件，这两个目标文件 用于配合glibc来实现C++的全局构造和析构。crt1.o是crt0.o的后续演进版本,crt1.o中会非常重要的.init段和.fini 段以及_start函数的入口..init段和.fini段实际上是靠crti.o以及crtn.o来实现的. init段是main函数之前的初始化工作代码, 比如全局变量的构造. </p>
+<p>3、ld的作用？ld当前版本是多少？查资料说明ld脚本的含义（逐行注释）<br>    ld的作用：ld是GNU binutils工具集中的一个，是众多Linkers（链接器）的一种。完成的功能自然也就是链接器的基本功能：把各种目标文件和库文件链接起来，并重定向它们的数据，完成符号解析。链接其实主要就是完成四个方面的工作：storage allocation、symbol management、libraries、relocation。<br>    ld可以识别一种Linker command Language表示的linker scriopt文件来显式的控制链接的过程。通过BFD（Binary Format Description）库，ld可以读取和操作COFF（common object file format）、ELF（executable and linking format）、a.out等各种格式的目标文件。<br>    查看ld的版本以及简单介绍：ld -version<br>    long@ubuntu:~/Task03$ ld -version<br>    GNU ld (GNU Binutils for Ubuntu) 2.26.1<br>    Copyright (C) 2015 Free Software Foundation, Inc.<br>    这个程序是自由软件；您可以遵循GNU 通用公共授权版本 3 或<br>    (您自行选择的) 稍后版本以再次散布它。<br>    这个程序完全没有任何担保。<br>ld脚本的含义：</p>
+<pre><code>OUTPUT_FORMAT(&quot;elf32-i386&quot;, &quot;elf32-i386&quot;,
+          &quot;elf32-i386&quot;)
+OUTPUT_ARCH(i386)
+</code></pre><p>OUTPUT_FORMAT 和 OUTPUT_ARCH 都是 ld 脚本的保留字命令。OUTPUT_FORMAT 说明输出二进制文件的格式。OUTPUT_ARCH 说明输出文件系统平台。<br>ENTRY(_start)<br>ENTRY 命令的作用是，将后面括号中的符号值设置成入口地址。入口地址（entry point）的定义是这样的──进程执行的第一条用户空间的指令在进程地址空间中的地址。<br>ld 有多种方法设置进程入口地址，通常它按以下顺序：（编号越前, 优先级越高）<br>    1, ld 命令行的-e选项<br>    2, 连接脚本的 ENTRY(SYMBOL) 命令<br>    3, 如果定义了 start 符号, 使用 start 符号值<br>    4, 如果存在 .text section, 使用 .text section 的第一字节的位置值<br>    5, 使用值 0<br>SEARCH_DIR(“/usr/i486-linux-gnu/lib32”);<br>设置链接时搜寻库文件目录.<br>SECTIONS<br>{</p>
+<p>然后，接下来是一大段的 SECTIONS，对应的右大括号直到脚本的末尾。<br>SECTIONS 命令告诉 ld 如何把输入文件的 sections 映射到输出文件的各个 section：即是如何将输入 section 合为输出 section；如何把输出 section 放入程序地址空间 (VMA) 和进程地址空间 (LMA) 。该命令格式如下：<br>SECTIONS<br>{<br>….<br>} </p>
+<p>/<em> Read-only sections, merged into text segment: </em>/<br>  PROVIDE (__executable_start = SEGMENT_START(“text-segment”, 0x08048000));<br>PROVIDE 定义的变量 如果源文件中已经定义值 那么用源文件中的，如果没有定义则用脚本中定义的。<br>并设定该变量的值为0x08048000<br>. = SEGMENT_START(“text-segment”, 0x08048000) + SIZEOF_HEADERS;<br>这句把定位器符号置为 0x08048000 + SIZE_HEADERS（若不指定，则该符号的初始值为 0）。<br>SIZE_HEADERS为输出文件的文件头.<br>. 是一个特殊的符号，它是定位器，一个位置指针，指向程序地址空间内的某位置（或某section内的偏移，如果它在SECTIONS命令内的某section描述内），该符号只能在SECTIONS命令内使用。 </p>
+<pre><code>.rel.dyn        :
+    {
+      *(.rel.init)
+      *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+      *(.rel.fini)
+      *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+      *(.rel.data.rel.ro* .rel.gnu.linkonce.d.rel.ro.*)
+      *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+      *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+      *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+      *(.rel.ctors)
+      *(.rel.dtors)
+      *(.rel.got)
+      *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+      *(.rel.ifunc)
+    }
+  .rel.plt        :
+    {
+      *(.rel.plt)
+      PROVIDE_HIDDEN (__rel_iplt_start = .);
+      *(.rel.iplt)
+      PROVIDE_HIDDEN (__rel_iplt_end = .);
+    }
+</code></pre><p>以上这些段主要用于重定位.</p>
+<pre><code>.init           :
+ {
+   KEEP (*(.init))
+ } =0x90909090
+ .plt            : { *(.plt) *(.iplt) }
+ .text           :
+ {
+   *(.text.unlikely .text.*_unlikely)
+   *(.text .stub .text.* .gnu.linkonce.t.*)
+   /* .gnu.warning sections are handled specially by elf32.em.  */
+   *(.gnu.warning)
+ } =0x90909090
+</code></pre><p>.init将在下文与.fini一起介绍.<br>.text : 表示text段开始.<br><em>(.text) 将所有(</em>符号代表任意输入文件)输入文件的.text section合并成一个.text section, 该section的地址由定位器符号的值指定, 即0x08048000. </p>
+<pre><code>*(.text.unlikely .text.*_unlikely)
+*(.text .stub .text.* .gnu.linkonce.t.*)
+/* .gnu.warning sections are handled specially by elf32.em.  */
+*(.gnu.warning)
+  .fini           :
+  {
+    KEEP (*(.fini)) #
+</code></pre><p>KEEP()强制连接器保留一些特定的section<br>  } =0x90909090<br>ELF文件中定义了 .init 和 .fini 两个特殊的段，其中 .init 段中的代码会在main之前被执行，.fini 段中的代码会在main退出之后被执行.默认用NOP(0x90)字段进行填充.<br>  PROVIDE (<strong>etext = .);<br>  PROVIDE (_etext = .);<br>  PROVIDE (etext = .);
+</strong>etext=.  _etext = .  etext=.; 我们看到，很多变量都定义成等于这个 . 符，实际上这个符号所代表的值是在变化的，随着越往后走，值越增加，根据前面填充的多少自动往后加。即指定当前地址值为代码段结束位置.<br>这里就定义了一个 etext 符号，当目标文件内引用了 etext 符号，却没有定义它时，etext 符号对应的地址被定义为 .text section 之后的第一个字节的地址。<br>  .rodata         : { <em>(.rodata .rodata.</em> .gnu.linkonce.r.<em>) }<br>  .rodata1        : { </em>(.rodata1) }<br>数据段终于来到了，意思很容易理解的了(用于只读数据段)。<br> /<em> Adjust the address for the data segment.  We want to adjust up to<br>     the same address within the page on the next page up.  </em>/<br>  . = ALIGN (CONSTANT (MAXPAGESIZE)) - ((CONSTANT (MAXPAGESIZE) - .) &amp; (CONSTANT (MAXPAGESIZE) - 1));<br> . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));<br>如注释所述用于地址调整,为数据段作相应的地址对齐.<br>  /<em> Thread Local Storage sections  </em>/<br>  .tdata      : { <em>(.tdata .tdata.</em> .gnu.linkonce.td.<em>) }<br>  .tbss          : { </em>(.tbss .tbss.<em> .gnu.linkonce.tb.</em>) *(.tcommon) }<br>正如注释所描述,这两个段用于线程的局部数据段(包括data及bss)<br>CONSTRUCTORS 是一个保留字命令。与 c++ 内的（全局对象的）构造函数和（全局对像的）析构函数相关。 </p>
+<pre><code>.ctors          :
+ {
+   /* gcc uses crtbegin.o to find the start of
+      the constructors, so we make sure it is
+      first.  Because this is a wildcard, it
+      doesn&apos;t matter if the user does not
+      actually link against crtbegin.o; the
+      linker won&apos;t look for a file to match a
+      wildcard.  The wildcard also means that it
+      doesn&apos;t matter which directory crtbegin.o
+      is in.  */
+   KEEP (*crtbegin.o(.ctors))
+   KEEP (*crtbegin?.o(.ctors))
+   /* We don&apos;t want to include the .ctor section from
+      the crtend.o file until after the sorted ctors.
+      The .ctor section from the crtend file contains the
+      end of ctors marker and it must be last */
+   KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+   KEEP (*(SORT(.ctors.*)))
+   KEEP (*(.ctors))
+ }
+ .dtors          :
+ {
+   KEEP (*crtbegin.o(.dtors))
+   KEEP (*crtbegin?.o(.dtors))
+   KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+   KEEP (*(SORT(.dtors.*)))
+   KEEP (*(.dtors))
+ }
+</code></pre><p><strong>对于支持任意section名的目标文件格式，比如COFF、ELF格式，GNU C++将全局构造和全局析构信息分别放入 .ctors section 和 .dtors section 内</strong></p>
+<p>当连接器生成的目标文件格式不支持任意section名字时，比如说ECOFF、XCOFF格式，连接器将通过名字来识别全局构造和全局析构，对于这些文件格式，连接器把与全局构造和全局析构的相关信息放入出现 CONSTRUCTORS 关键字的输出section内。<br>一般来说，GNU C++在函数<strong>main内安排全局构造代码的运行，而</strong>main函数被初始化代码（在main函数调用之前执行）调用。<br>意义与前面的 etext 类似。edata 符号也较为重要。 </p>
+<pre><code>__bss_start = .;
+ .bss            :
+ {
+  *(.dynbss)
+  *(.bss .bss.* .gnu.linkonce.b.*)
+  *(COMMON)
+  /* Align here to ensure that the .bss section occupies space up to
+     _end.  Align after .bss to ensure correct alignment even if the
+     .bss section disappears because there are no input sections.
+     FIXME: Why do we need it? When there is no .bss section, we don&apos;t
+     pad the .data section.  */
+  . = ALIGN(. != 0 ? 32 / 8 : 1);
+ }
+ . = ALIGN(32 / 8);
+ . = ALIGN(32 / 8);
+ _end = .; PROVIDE (end = .);
+ . = DATA_SEGMENT_END (.)
+</code></pre><p>BSS段开始了。<br>COMMON 这个保留字的意义：<br>通用符号(common symbol)的输入section：<br>在许多目标文件格式中，通用符号并没有占用一个section。连接器认为：输入文件的所有通用符号在名为COMMON的section内。<br>上例中将所有输入文件的所有通用符号放入输出.bss section内。<br>这里，定义了几个重要的符号<br>__bss_start = .;<br>_end = .;<br>end = .;<br>在代码中可能会用到的。</p>
+<pre><code>/* Stabs debugging sections.  */
+ .stab          0 : { *(.stab) }
+ .stabstr       0 : { *(.stabstr) }
+ .stab.excl     0 : { *(.stab.excl) }
+ .stab.exclstr  0 : { *(.stab.exclstr) }
+ .stab.index    0 : { *(.stab.index) }
+ .stab.indexstr 0 : { *(.stab.indexstr) }
+ .comment       0 : { *(.comment) }
+ /* DWARF debug sections.
+    Symbols in the DWARF debugging sections are relative to the beginning
+    of the section so we begin them at 0.  */
+ /* DWARF 1 */
+ .debug          0 : { *(.debug) }
+ .line           0 : { *(.line) }
+ /* GNU DWARF 1 extensions */
+ .debug_srcinfo  0 : { *(.debug_srcinfo) }
+ .debug_sfnames  0 : { *(.debug_sfnames) }
+ /* DWARF 1.1 and DWARF 2 */
+ .debug_aranges  0 : { *(.debug_aranges) }
+ .debug_pubnames 0 : { *(.debug_pubnames) }
+ /* DWARF 2 */
+ .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+ .debug_abbrev   0 : { *(.debug_abbrev) }
+ .debug_line     0 : { *(.debug_line) }
+ .debug_frame    0 : { *(.debug_frame) }
+ .debug_str      0 : { *(.debug_str) }
+ .debug_loc      0 : { *(.debug_loc) }
+ .debug_macinfo  0 : { *(.debug_macinfo) }
+ /* SGI/MIPS DWARF 2 extensions */
+ .debug_weaknames 0 : { *(.debug_weaknames) }
+ .debug_funcnames 0 : { *(.debug_funcnames) }
+ .debug_typenames 0 : { *(.debug_typenames) }
+ .debug_varnames  0 : { *(.debug_varnames) }
+ /* DWARF 3 */
+ .debug_pubtypes 0 : { *(.debug_pubtypes) }
+ .debug_ranges   0 : { *(.debug_ranges) }
+ .gnu.attributes 0 : { KEEP (*(.gnu.attributes)) }
+</code></pre><p>  这里主要包含代码的调试信息,用于调试时使用.包括一些行号信息及符号表等.<br>/DISCARD/ : { <em>(.note.GNU-stack) </em>(.gnu_debuglink) <em>(.gnu.lto_</em>) }<br>DISCARD关键字用于将指定段舍弃,不出现在输出文件中.<br>余下的这几个意义也类似，看英文注释应该能明白。<br>对初步编译出来的一个二进制文件进行 nm 解析(nm -n a.out)，得到如下内容:</p>
+<pre><code>     U _IO_getc@@GLIBC_2.0
+         w _Jv_RegisterClasses
+         U __ctype_b_loc@@GLIBC_2.3
+         U __errno_location@@GLIBC_2.0
+         w __gmon_start__
+         U __isoc99_sscanf@@GLIBC_2.7
+         U __libc_start_main@@GLIBC_2.0
+         U __stack_chk_fail@@GLIBC_2.4
+         U exit@@GLIBC_2.0
+         U fclose@@GLIBC_2.1
+         U feof@@GLIBC_2.0
+         U fgets@@GLIBC_2.0
+         U fopen@@GLIBC_2.1
+         U printf@@GLIBC_2.0
+         U sprintf@@GLIBC_2.0
+         U strerror@@GLIBC_2.0
+         U strtol@@GLIBC_2.0
+         U vfprintf@@GLIBC_2.0
+080485a8 T _init
+08048700 T _start
+08048730 t __do_global_dtors_aux
+08048790 t frame_dummy
+080487b4 T die
+080487e7 T print_name_pid
+08048904 T print_maps
+08048be3 T parse_pid
+08048c3a T main
+08048cc0 T __libc_csu_fini
+08048cd0 T __libc_csu_init
+08048d2a T __i686.get_pc_thunk.bx
+08048d30 t __do_global_ctors_aux
+08048d5c T _fini
+08048d78 R _fp_hw
+08048d7c R _IO_stdin_used
+08048e80 r __FRAME_END__
+08049f0c d __CTOR_LIST__
+08049f0c d __init_array_end
+08049f0c d __init_array_start
+08049f10 d __CTOR_END__
+08049f14 d __DTOR_LIST__
+08049f18 D __DTOR_END__
+08049f1c d __JCR_END__
+08049f1c d __JCR_LIST__
+08049f20 d _DYNAMIC
+08049ff4 d _GLOBAL_OFFSET_TABLE_
+0804a044 D __data_start
+0804a044 W data_start
+0804a048 D __dso_handle
+0804a04c A __bss_start
+0804a04c A _edata
+0804a04c B stderr@@GLIBC_2.0
+0804a050 b completed.7021
+0804a054 b dtor_idx.7023
+0804a058 A _end
+</code></pre><p>可以看到，所有的地址全是从 0x08048000 开始的。<br>U表示该符号未定义,主要是动态链接库中的符号,在目标文件加载入内存的时候再进行解析.<br>w表示该符号为弱符号</p>
+<pre><code>U _IO_getc@@GLIBC_2.0
+w _Jv_RegisterClasses
+U __ctype_b_loc@@GLIBC_2.3
+U __errno_location@@GLIBC_2.0
+w __gmon_start__
+
+U __isoc99_sscanf@@GLIBC_2.7
+U __libc_start_main@@GLIBC_2.0
+U __stack_chk_fail@@GLIBC_2.4
+U exit@@GLIBC_2.0
+U fclose@@GLIBC_2.1
+U feof@@GLIBC_2.0
+U fgets@@GLIBC_2.0
+U fopen@@GLIBC_2.1
+U printf@@GLIBC_2.0
+U sprintf@@GLIBC_2.0
+U strerror@@GLIBC_2.0
+U strtol@@GLIBC_2.0
+U vfprintf@@GLIBC_2.0
+</code></pre><p>两个个起始符号（T表示在text段中）</p>
+<pre><code>080485a8 T _init
+08048700 T _start
+</code></pre><p>几个函数都在代码段内</p>
+<pre><code>08048730 t __do_global_dtors_aux
+08048790 t frame_dummy
+080487b4 T die
+080487e7 T print_name_pid
+08048904 T print_maps
+08048be3 T parse_pid
+08048c3a T main
+</code></pre><p>栈底地址果然是在 start 下方 0x4000 处</p>
+<pre><code>800fc000 T stack
+（A 表示绝对不变）
+0804a04c A __bss_start
+0804a04c A _edata
+0804a058 A _end
+</code></pre><p>全局构造和析构变量段（D表示在已初始化过的数据段中）</p>
+<pre><code>08049f0c d __CTOR_LIST__
+08049f0c d __init_array_end
+08049f0c d __init_array_start
+08049f10 d __CTOR_END__
+08049f14 d __DTOR_LIST__
+08049f18 D __DTOR_END__
+08049f1c d __JCR_END__
+08049f1c d __JCR_LIST__
+08049f20 d _DYNAMIC
+08049ff4 d _GLOBAL_OFFSET_TABLE_
+0804a044 D __data_start
+0804a044 W data_start
+0804a048 D __dso_handle
+</code></pre><p>还有一个是用 B 标记的，表示在未初始化的数据段中</p>
+<pre><code>0804a04c B stderr@@GLIBC_2.0
+0804a050 b completed.7021
+0804a054 b dtor_idx.7023
+</code></pre><p>4、通过objdump反汇编，找到下面两个函数的位置，_libc_csu_init和_libc_csu_finit，并查资料说明他们的具体功能和整个程序加载过程中的执行顺序。</p>
+<pre><code>a.08048424 &lt;main&gt;
+b.08048460 &lt;__libc_csu_init&gt;
+c.080484c0 &lt;__libc_csu_fini&gt;
+</code></pre><p>1、<strong>libc_csu_init, 负责调用_init()<br>2、</strong>libc_csu_fini, 负责调用_finit()</p>
+
       
     </div>
     
@@ -451,7 +762,7 @@ function setSidebarMarginTop (headerOffset) {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/03/17/数据库（三）：关系数据库/" title="数据库（三）：关系数据库">http://yoursite.com/2019/03/17/数据库（三）：关系数据库/</a>
+    <a href="http://yoursite.com/2019/03/17/浅析LinuxC语言的运行过程/" title="浅析LinuxC语言的运行过程">http://yoursite.com/2019/03/17/浅析LinuxC语言的运行过程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -464,6 +775,14 @@ function setSidebarMarginTop (headerOffset) {
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/C语言/" rel="tag"># C语言</a>
+          
+        </div>
+      
 
       
       
@@ -473,8 +792,8 @@ function setSidebarMarginTop (headerOffset) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/数据库（二）：数据模型与数据库模型/" rel="next" title="数据库（二）：数据模型与数据库模型">
-                <i class="fa fa-chevron-left"></i> 数据库（二）：数据模型与数据库模型
+              <a href="/2019/03/17/数据库（四）：SQL基础与语句操作/" rel="next" title="数据库（四）：SQL基础与语句操作">
+                <i class="fa fa-chevron-left"></i> 数据库（四）：SQL基础与语句操作
               </a>
             
           </div>
@@ -482,10 +801,6 @@ function setSidebarMarginTop (headerOffset) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/17/数据库（四）：SQL基础与语句操作/" rel="prev" title="数据库（四）：SQL基础与语句操作">
-                数据库（四）：SQL基础与语句操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
