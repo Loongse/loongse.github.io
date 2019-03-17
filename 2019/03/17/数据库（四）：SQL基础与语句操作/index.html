@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hello, NexT">
+  <meta name="keywords" content="数据库基础,SQL语句,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="感觉好多东西要学呀呀！！">
+<meta name="description" content="SQL语言基础操作">
+<meta name="keywords" content="数据库基础,SQL语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库（四）：SQL基础与语句操作">
 <meta property="og:url" content="http://yoursite.com/2019/03/17/数据库（四）：SQL基础与语句操作/index.html">
 <meta property="og:site_name" content="不负初心">
-<meta property="og:description" content="感觉好多东西要学呀呀！！">
+<meta property="og:description" content="SQL语言基础操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-17T10:39:06.795Z">
+<meta property="og:updated_time" content="2019-03-17T13:13:07.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库（四）：SQL基础与语句操作">
-<meta name="twitter:description" content="感觉好多东西要学呀呀！！">
+<meta name="twitter:description" content="SQL语言基础操作">
 
 
 
@@ -363,6 +364,28 @@ function setSidebarMarginTop (headerOffset) {
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库概论/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库概论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -384,7 +407,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  956
                 </span>
               
 
@@ -400,12 +423,16 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  SQL语言基础操作
+              </div>
           
 
         </div>
@@ -421,7 +448,98 @@ function setSidebarMarginTop (headerOffset) {
       
 
       
-        
+        <h3 id="SQL语言概述"><a href="#SQL语言概述" class="headerlink" title="SQL语言概述"></a>SQL语言概述</h3><h5 id="SQL语言的特点"><a href="#SQL语言的特点" class="headerlink" title="SQL语言的特点"></a>SQL语言的特点</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;SQL 是用于访问和处理数据库的标准的计算机语言。如今比较常用的数据库大多为关系型数据库，这类数据库包括：MySQL、SQL Server、Access、Oracle、Sybase、DB2 等等。</p>
+<ul>
+<li>一体化：</li>
+<li>高度非过程化</li>
+<li>简洁</li>
+<li>使用方式多样<h5 id="SQL语言主要功能"><a href="#SQL语言主要功能" class="headerlink" title="SQL语言主要功能"></a>SQL语言主要功能</h5></li>
+<li>数据查询功能</li>
+<li>数据定义功能</li>
+<li>数据操纵功能</li>
+<li>数据控制功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SQL功能</th>
+<th>命令动词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据查询</td>
+<td>SELECT</td>
+</tr>
+<tr>
+<td>数据定义</td>
+<td>CREATE DROP ALTER</td>
+</tr>
+<tr>
+<td>数据操纵</td>
+<td>INSERT UPDATE DELETE</td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td>GRANT REVOKE DENY</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;其中，数据定义功能用于定义（CREATE）、删除（DROP）、修改（ALTER）数据库中的对象（关系表、视图、索引）；数据查询用于查询数据的功能，虽然只有SELECT一条命令，但是在熟练的掌握之后，SELECT的功能是十分强大的，他可以进行数据的筛选，只要提供了正确的搜索条件，你可以熟练使用你的数据库；数据操纵可以增加、更新、删除数据库中的数据，数据操纵功能与定义功能不同的地方在于前者的操作是对于数据库的数据而言的，而后者则是针对数据库对象来说的；数据控制功能可以控制用户对数据的操作权限。</p>
+<hr>
+<h3 id="SQL语言支持的数据类型"><a href="#SQL语言支持的数据类型" class="headerlink" title="SQL语言支持的数据类型"></a>SQL语言支持的数据类型</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;SQL中的数据主要包括以下几种类型：  </p>
+<ul>
+<li>数值型</li>
+<li>字符串型</li>
+<li>日期时间型</li>
+<li>货币型</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;不同的数据库可供选择的数据类型是不全一致的，因此在使用数据库进行数据的使用时，应尽量使用标准SQL库中支持的数据类型，方便后期的项目移植以及多平台使用。下面是菜鸟教程中介绍的常用的SQL数据类型：<a href="http://www.runoob.com/sql/sql-datatypes-general.html" target="_blank" rel="noopener">SQL数据类型</a>。<br>其中字符串型有三类组成，分别是：</p>
+<ul>
+<li>普通编码字符串类型</li>
+<li>统一字符编码字符串类型</li>
+<li>二进制字符串类型</li>
+</ul>
+<hr>
+<h3 id="SQL基础语法使用"><a href="#SQL基础语法使用" class="headerlink" title="SQL基础语法使用"></a>SQL基础语法使用</h3><h4 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在关系数据模型中，一般将数据划分为三个层次，外模式–&gt;视图，模式–&gt;表，内模式–&gt;索引，在这三个模式中，模式与另外两个建立起两层联系，方便了数据库的管理与存储。另外一个数据库对象——架构，则相当于容器，可以在其下面创建表、视图等数据库对象。如果把数据库系统比喻成操作系统，那么架构则对应于目录，存放的其他对象就好比一个个文件。<br>| 数据库对象 | 创建          | 修改        | 删除        |<br>| ———- | ————- | ———– | ———– |<br>| 架构       | CREATE SCHEMA |    架构不可修改         | DROP SCHEMA |<br>| 表         | CREATE TABLE  | ALTER TABLE | DROP TABLE  |<br>| 视图       | CREATE VIEW   | ALTER VIEW  | DROP VIEW   |<br>| 索引       | CREATE INDEX  | ALTER INDEX | DROP INDEX  |</p>
+<h5 id="架构的定义与删除"><a href="#架构的定义与删除" class="headerlink" title="架构的定义与删除"></a>架构的定义与删除</h5><h5 id="基本表操作"><a href="#基本表操作" class="headerlink" title="基本表操作"></a>基本表操作</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;表的完整性约束：一般分为<strong>列级完整性约束</strong>和<strong>表级完整性约束</strong>，使用完整性约束可以增加数据的约束与数据之间的关联。</p>
+<table>
+<thead>
+<tr>
+<th>NOT NULL</th>
+<th>指定列不为空</th>
+<th>只可用于列级约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY KEY</td>
+<td>主键约束（可以理解为表的一个标记项）</td>
+<td></td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>外键约束（引用其他表的外键）</td>
+<td></td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>唯一值约束（可以存在一个NULL值）</td>
+<td></td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>默认值约束（指定列的默认值）</td>
+<td>只可用于列级约束</td>
+</tr>
+<tr>
+<td>CHECK</td>
+<td>列取值范围约束（指定列的取值范围或者多列之间的关系）</td>
+<td>MySQL对这个约束并不是很支持</td>
+</tr>
+</tbody>
+</table>
+<h6 id="表的创建与删除修改"><a href="#表的创建与删除修改" class="headerlink" title="表的创建与删除修改"></a>表的创建与删除修改</h6><h6 id="表的查询操作"><a href="#表的查询操作" class="headerlink" title="表的查询操作"></a>表的查询操作</h6><h6 id="表中数据的插入、更新、删除"><a href="#表中数据的插入、更新、删除" class="headerlink" title="表中数据的插入、更新、删除"></a>表中数据的插入、更新、删除</h6>
       
     </div>
     
@@ -463,6 +581,14 @@ function setSidebarMarginTop (headerOffset) {
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库基础/" rel="tag"># 数据库基础</a>
+          
+            <a href="/tags/SQL语句/" rel="tag"># SQL语句</a>
+          
+        </div>
       
 
       
@@ -571,8 +697,17 @@ function setSidebarMarginTop (headerOffset) {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -589,7 +724,7 @@ function setSidebarMarginTop (headerOffset) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -600,7 +735,7 @@ function setSidebarMarginTop (headerOffset) {
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -610,7 +745,7 @@ function setSidebarMarginTop (headerOffset) {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -656,6 +791,22 @@ function setSidebarMarginTop (headerOffset) {
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL语言概述"><span class="nav-number">1.</span> <span class="nav-text">SQL语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SQL语言的特点"><span class="nav-number">1.0.1.</span> <span class="nav-text">SQL语言的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SQL语言主要功能"><span class="nav-number">1.0.2.</span> <span class="nav-text">SQL语言主要功能</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL语言支持的数据类型"><span class="nav-number">2.</span> <span class="nav-text">SQL语言支持的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL基础语法使用"><span class="nav-number">3.</span> <span class="nav-text">SQL基础语法使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据定义功能"><span class="nav-number">3.1.</span> <span class="nav-text">数据定义功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#架构的定义与删除"><span class="nav-number">3.1.1.</span> <span class="nav-text">架构的定义与删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本表操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">基本表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#表的创建与删除修改"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">表的创建与删除修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表的查询操作"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">表的查询操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表中数据的插入、更新、删除"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">表中数据的插入、更新、删除</span></a></li></ol></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
           <i class="fa fa-arrow-up"></i>
@@ -689,7 +840,7 @@ function setSidebarMarginTop (headerOffset) {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">523</span>
+    <span title="Site words total count">1.5k</span>
   
 </div>
 

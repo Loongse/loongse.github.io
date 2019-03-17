@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-17T10:39:06.795Z</updated>
+  <updated>2019-03-17T13:13:07.335Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,12 +21,20 @@
     <link href="http://yoursite.com/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2019/03/17/数据库（四）：SQL基础与语句操作/</id>
     <published>2019-03-17T10:39:06.000Z</published>
-    <updated>2019-03-17T10:39:06.795Z</updated>
+    <updated>2019-03-17T13:13:07.335Z</updated>
     
     <summary type="html">
     
+      SQL语言基础操作
+    
     </summary>
     
+      <category term="数据库概论" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/"/>
+    
+    
+      <category term="数据库基础" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="SQL语句" scheme="http://yoursite.com/tags/SQL%E8%AF%AD%E5%8F%A5/"/>
     
   </entry>
   
@@ -50,6 +58,20 @@
     <id>http://yoursite.com/2019/03/17/数据库（二）：数据模型与数据库模型/</id>
     <published>2019-03-17T10:37:25.000Z</published>
     <updated>2019-03-17T10:37:25.884Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据库（一）：简介</title>
+    <link href="http://yoursite.com/2019/03/17/README/"/>
+    <id>http://yoursite.com/2019/03/17/README/</id>
+    <published>2019-03-17T10:35:22.000Z</published>
+    <updated>2019-03-17T10:35:23.181Z</updated>
     
     <summary type="html">
     

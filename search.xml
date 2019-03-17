@@ -1,39 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[数据库（四）：SQL基础与语句操作]]></title>
-    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[数据库（三）：关系数据库]]></title>
-    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[数据库（二）：数据模型与数据库模型]]></title>
-    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[数据库（一）：简介]]></title>
-    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Git操作（一）：Git安装与基础操作]]></title>
-    <url>%2F2019%2F03%2F17%2FGit%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9Agit%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[Git的安装Windows平台Linux平台Git工具 Git基础知识仓库（repository）分支的概念 Git基础操作建立一个本地仓库从网上下载一个仓库分支的创建、切换、删除与合并操作]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>数据库（四）：SQL基础与语句操作</title>
+      <link href="/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C/"/>
+      <url>/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SQL语言概述"><a href="#SQL语言概述" class="headerlink" title="SQL语言概述"></a>SQL语言概述</h3><h5 id="SQL语言的特点"><a href="#SQL语言的特点" class="headerlink" title="SQL语言的特点"></a>SQL语言的特点</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;SQL 是用于访问和处理数据库的标准的计算机语言。如今比较常用的数据库大多为关系型数据库，这类数据库包括：MySQL、SQL Server、Access、Oracle、Sybase、DB2 等等。</p><ul><li>一体化：</li><li>高度非过程化</li><li>简洁</li><li>使用方式多样<h5 id="SQL语言主要功能"><a href="#SQL语言主要功能" class="headerlink" title="SQL语言主要功能"></a>SQL语言主要功能</h5></li><li>数据查询功能</li><li>数据定义功能</li><li>数据操纵功能</li><li>数据控制功能</li></ul><table><thead><tr><th>SQL功能</th><th>命令动词</th></tr></thead><tbody><tr><td>数据查询</td><td>SELECT</td></tr><tr><td>数据定义</td><td>CREATE DROP ALTER</td></tr><tr><td>数据操纵</td><td>INSERT UPDATE DELETE</td></tr><tr><td>数据控制</td><td>GRANT REVOKE DENY</td></tr></tbody></table><p>&nbsp;&nbsp;&nbsp;&nbsp;其中，数据定义功能用于定义（CREATE）、删除（DROP）、修改（ALTER）数据库中的对象（关系表、视图、索引）；数据查询用于查询数据的功能，虽然只有SELECT一条命令，但是在熟练的掌握之后，SELECT的功能是十分强大的，他可以进行数据的筛选，只要提供了正确的搜索条件，你可以熟练使用你的数据库；数据操纵可以增加、更新、删除数据库中的数据，数据操纵功能与定义功能不同的地方在于前者的操作是对于数据库的数据而言的，而后者则是针对数据库对象来说的；数据控制功能可以控制用户对数据的操作权限。</p><hr><h3 id="SQL语言支持的数据类型"><a href="#SQL语言支持的数据类型" class="headerlink" title="SQL语言支持的数据类型"></a>SQL语言支持的数据类型</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;SQL中的数据主要包括以下几种类型：  </p><ul><li>数值型</li><li>字符串型</li><li>日期时间型</li><li>货币型</li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;不同的数据库可供选择的数据类型是不全一致的，因此在使用数据库进行数据的使用时，应尽量使用标准SQL库中支持的数据类型，方便后期的项目移植以及多平台使用。下面是菜鸟教程中介绍的常用的SQL数据类型：<a href="http://www.runoob.com/sql/sql-datatypes-general.html" target="_blank" rel="noopener">SQL数据类型</a>。<br>其中字符串型有三类组成，分别是：</p><ul><li>普通编码字符串类型</li><li>统一字符编码字符串类型</li><li>二进制字符串类型</li></ul><hr><h3 id="SQL基础语法使用"><a href="#SQL基础语法使用" class="headerlink" title="SQL基础语法使用"></a>SQL基础语法使用</h3><h4 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在关系数据模型中，一般将数据划分为三个层次，外模式–&gt;视图，模式–&gt;表，内模式–&gt;索引，在这三个模式中，模式与另外两个建立起两层联系，方便了数据库的管理与存储。另外一个数据库对象——架构，则相当于容器，可以在其下面创建表、视图等数据库对象。如果把数据库系统比喻成操作系统，那么架构则对应于目录，存放的其他对象就好比一个个文件。<br>| 数据库对象 | 创建          | 修改        | 删除        |<br>| ———- | ————- | ———– | ———– |<br>| 架构       | CREATE SCHEMA |    架构不可修改         | DROP SCHEMA |<br>| 表         | CREATE TABLE  | ALTER TABLE | DROP TABLE  |<br>| 视图       | CREATE VIEW   | ALTER VIEW  | DROP VIEW   |<br>| 索引       | CREATE INDEX  | ALTER INDEX | DROP INDEX  |</p><h5 id="架构的定义与删除"><a href="#架构的定义与删除" class="headerlink" title="架构的定义与删除"></a>架构的定义与删除</h5><h5 id="基本表操作"><a href="#基本表操作" class="headerlink" title="基本表操作"></a>基本表操作</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;表的完整性约束：一般分为<strong>列级完整性约束</strong>和<strong>表级完整性约束</strong>，使用完整性约束可以增加数据的约束与数据之间的关联。</p><table><thead><tr><th>NOT NULL</th><th>指定列不为空</th><th>只可用于列级约束</th></tr></thead><tbody><tr><td>PRIMARY KEY</td><td>主键约束（可以理解为表的一个标记项）</td><td></td></tr><tr><td>FOREIGN KEY</td><td>外键约束（引用其他表的外键）</td><td></td></tr><tr><td>UNIQUE</td><td>唯一值约束（可以存在一个NULL值）</td><td></td></tr><tr><td>DEFAULT</td><td>默认值约束（指定列的默认值）</td><td>只可用于列级约束</td></tr><tr><td>CHECK</td><td>列取值范围约束（指定列的取值范围或者多列之间的关系）</td><td>MySQL对这个约束并不是很支持</td></tr></tbody></table><h6 id="表的创建与删除修改"><a href="#表的创建与删除修改" class="headerlink" title="表的创建与删除修改"></a>表的创建与删除修改</h6><h6 id="表的查询操作"><a href="#表的查询操作" class="headerlink" title="表的查询操作"></a>表的查询操作</h6><h6 id="表中数据的插入、更新、删除"><a href="#表中数据的插入、更新、删除" class="headerlink" title="表中数据的插入、更新、删除"></a>表中数据的插入、更新、删除</h6>]]></content>
+      
+      
       <categories>
-        <category>Git入门</category>
+          
+          <category> 数据库概论 </category>
+          
       </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[IEEE 754浮点数转换]]></title>
-    <url>%2F2019%2F03%2F17%2FIEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2%2F</url>
-    <content type="text"><![CDATA[这里用了一下《深入理解计算机系统》中的几个习题来具体说明了一下 主要分为以下几个步骤： 1、转换为二进制2、写为IEEE 754表达格式3、求尾数、阶码、符号位4、机器码以及十六进制表示+1.75： 二进制表示：+1.11 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.110000..00（尾数） e-127 =0,e=127=0111 1111 (阶码) 符号：正数为0 十六进制：3FE00000H +19： 二进制表示：+0001 0011 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.0011..00（尾数） e-127 =4,e=131=1000 0011 (阶码) 符号：正数为0 十六进制：41980000H 258： 二进制表示：+1 0000 0010 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.0000 0010..00（尾数） e-127 =8,e=135=1000 0111 (阶码) 符号：正数为0 十六进制：43810000H 利用IEEE 754标准求下列加减法： 1）0.75 + （-65.25） 2）0.75 - （-65.25） 设 X = +0.75, Y =-65.25 [X]2 = +0.1100 机器码表示为：0 0111 1110 1000 …00 则阶码EX= 0111 1110 [Y]2 =- 1000 001.01 机器码表示为：1 1000 0101 0000 0101 0000…00 则阶码EY= 1000 0101 对阶后在进行对阶的时候：EX= 0111 1110 EY= 1000 0101 [EX- EY]补 = 0111 1110 + 0111 1011 （mod 256）= 1111 1001 (mod 256) = (-7)10 所以X的尾数需要右移7位，对阶后X的阶码移码为 1000 0101，故实际阶码也即尾数操作后需要右移的位数为：1000 0101 - 0111 1111 = 0000 0110 = 6。 尾数加减相加：-1.00000010 X 2^6 = (-64.50)10相减: +1.00001000 X2^6 = (66.00)10尾数的舍入处理尾数没有舍入 阶码溢出判断两次均没有出现阶码溢出的情况。 所以结果为： -64.50和66.00]]></content>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 数据库基础 </tag>
+            
+            <tag> SQL语句 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库（三）：关系数据库</title>
+      <link href="/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库（二）：数据模型与数据库模型</title>
+      <link href="/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库（一）：简介</title>
+      <link href="/2019/03/17/README/"/>
+      <url>/2019/03/17/README/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库（一）：简介</title>
+      <link href="/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
+      <url>/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git操作（一）：Git安装与基础操作</title>
+      <link href="/2019/03/17/Git%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9Agit%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"/>
+      <url>/2019/03/17/Git%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9Agit%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><h5 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h5><h5 id="Linux平台"><a href="#Linux平台" class="headerlink" title="Linux平台"></a>Linux平台</h5><h5 id="Git工具"><a href="#Git工具" class="headerlink" title="Git工具"></a>Git工具</h5><hr><h3 id="Git基础知识"><a href="#Git基础知识" class="headerlink" title="Git基础知识"></a>Git基础知识</h3><h5 id="仓库（repository）"><a href="#仓库（repository）" class="headerlink" title="仓库（repository）"></a>仓库（repository）</h5><h5 id="分支的概念"><a href="#分支的概念" class="headerlink" title="分支的概念"></a>分支的概念</h5><hr><h3 id="Git基础操作"><a href="#Git基础操作" class="headerlink" title="Git基础操作"></a>Git基础操作</h3><h5 id="建立一个本地仓库"><a href="#建立一个本地仓库" class="headerlink" title="建立一个本地仓库"></a>建立一个本地仓库</h5><h5 id="从网上下载一个仓库"><a href="#从网上下载一个仓库" class="headerlink" title="从网上下载一个仓库"></a>从网上下载一个仓库</h5><h5 id="分支的创建、切换、删除与合并操作"><a href="#分支的创建、切换、删除与合并操作" class="headerlink" title="分支的创建、切换、删除与合并操作"></a>分支的创建、切换、删除与合并操作</h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git入门 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IEEE 754浮点数转换</title>
+      <link href="/2019/03/17/IEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2/"/>
+      <url>/2019/03/17/IEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2/</url>
+      
+        <content type="html"><![CDATA[<p>这里用了一下《深入理解计算机系统》中的几个习题来具体说明了一下</p><p>主要分为以下几个步骤：</p><h5 id="1、转换为二进制"><a href="#1、转换为二进制" class="headerlink" title="1、转换为二进制"></a>1、转换为二进制</h5><h5 id="2、写为IEEE-754表达格式"><a href="#2、写为IEEE-754表达格式" class="headerlink" title="2、写为IEEE 754表达格式"></a>2、写为IEEE 754表达格式</h5><h5 id="3、求尾数、阶码、符号位"><a href="#3、求尾数、阶码、符号位" class="headerlink" title="3、求尾数、阶码、符号位"></a>3、求尾数、阶码、符号位</h5><h5 id="4、机器码以及十六进制表示"><a href="#4、机器码以及十六进制表示" class="headerlink" title="4、机器码以及十六进制表示"></a>4、机器码以及十六进制表示</h5><p>+1.75：</p><p>二进制表示：+1.11</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.110000..00（尾数）</p><p>e-127 =0,e=127=0111 1111 (阶码)</p><p>符号：正数为0</p><p>十六进制：3FE00000H</p><p>+19：</p><p>二进制表示：+0001 0011</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.0011..00（尾数）</p><p>e-127 =4,e=131=1000 0011 (阶码)</p><p>符号：正数为0</p><p>十六进制：41980000H</p><p>258：</p><p>二进制表示：+1 0000 0010</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.0000 0010..00（尾数）</p><p>e-127 =8,e=135=1000 0111 (阶码)</p><p>符号：正数为0</p><p>十六进制：43810000H</p><p>利用IEEE 754标准求下列加减法：</p><p>1）0.75 + （-65.25）</p><p>2）0.75 - （-65.25）</p><p>设 X = +0.75, Y =-65.25</p><p>[X]2 = +0.1100</p><p>机器码表示为：0 0111 1110 1000 …00</p><p>则阶码EX= 0111 1110</p><p>[Y]2 =- 1000 001.01</p><p>机器码表示为：1 1000 0101 0000 0101 0000…00</p><p>则阶码EY= 1000 0101</p><p>对阶后<br>在进行对阶的时候：EX= 0111 1110 EY= 1000 0101</p><p>[EX- EY]补 = 0111 1110 + 0111 1011 （mod 256）= 1111 1001 (mod 256) = (-7)10 </p><p>所以X的尾数需要右移7位，对阶后X的阶码移码为 1000 0101，故实际阶码也即尾数操作后需要右移的位数为：1000 0101 - 0111 1111 = 0000 0110 = 6。</p><p>尾数加减<br>相加：-1.00000010 X 2^6 = (-64.50)10<br>相减: +1.00001000 X2^6 = (66.00)10<br>尾数的舍入处理<br>尾数没有舍入</p><p>阶码溢出判断<br>两次均没有出现阶码溢出的情况。</p><p>所以结果为：</p><p>-64.50和66.00</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
