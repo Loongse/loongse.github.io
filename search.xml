@@ -1,46 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>IEEE 754浮点数转换</title>
-      <link href="/2019/03/17/IEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2/"/>
-      <url>/2019/03/17/IEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2/</url>
-      
-        <content type="html"><![CDATA[<p>这里用了一下《深入理解计算机系统》中的几个习题来具体说明了一下</p><p>主要分为以下几个步骤：</p><h5 id="1、转换为二进制"><a href="#1、转换为二进制" class="headerlink" title="1、转换为二进制"></a>1、转换为二进制</h5><h5 id="2、写为IEEE-754表达格式"><a href="#2、写为IEEE-754表达格式" class="headerlink" title="2、写为IEEE 754表达格式"></a>2、写为IEEE 754表达格式</h5><h5 id="3、求尾数、阶码、符号位"><a href="#3、求尾数、阶码、符号位" class="headerlink" title="3、求尾数、阶码、符号位"></a>3、求尾数、阶码、符号位</h5><h5 id="4、机器码以及十六进制表示"><a href="#4、机器码以及十六进制表示" class="headerlink" title="4、机器码以及十六进制表示"></a>4、机器码以及十六进制表示</h5><p>+1.75：</p><p>二进制表示：+1.11</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.110000..00（尾数）</p><p>e-127 =0,e=127=0111 1111 (阶码)</p><p>符号：正数为0</p><p>十六进制：3FE00000H</p><p>+19：</p><p>二进制表示：+0001 0011</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.0011..00（尾数）</p><p>e-127 =4,e=131=1000 0011 (阶码)</p><p>符号：正数为0</p><p>十六进制：41980000H</p><p>258：</p><p>二进制表示：+1 0000 0010</p><p>IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127),</p><p>s = 0（符号位）</p><p>1.f = 1.0000 0010..00（尾数）</p><p>e-127 =8,e=135=1000 0111 (阶码)</p><p>符号：正数为0</p><p>十六进制：43810000H</p><p>利用IEEE 754标准求下列加减法：</p><p>1）0.75 + （-65.25）</p><p>2）0.75 - （-65.25）</p><p>设 X = +0.75, Y =-65.25</p><p>[X]2 = +0.1100</p><p>机器码表示为：0 0111 1110 1000 …00</p><p>则阶码EX= 0111 1110</p><p>[Y]2 =- 1000 001.01</p><p>机器码表示为：1 1000 0101 0000 0101 0000…00</p><p>则阶码EY= 1000 0101</p><p>对阶后<br>在进行对阶的时候：EX= 0111 1110 EY= 1000 0101</p><p>[EX- EY]补 = 0111 1110 + 0111 1011 （mod 256）= 1111 1001 (mod 256) = (-7)10 </p><p>所以X的尾数需要右移7位，对阶后X的阶码移码为 1000 0101，故实际阶码也即尾数操作后需要右移的位数为：1000 0101 - 0111 1111 = 0000 0110 = 6。</p><p>尾数加减<br>相加：-1.00000010 X 2^6 = (-64.50)10<br>相减: +1.00001000 X2^6 = (66.00)10<br>尾数的舍入处理<br>尾数没有舍入</p><p>阶码溢出判断<br>两次均没有出现阶码溢出的情况。</p><p>所以结果为：</p><p>-64.50和66.00</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>LOONG</title>
-      <link href="/2019/03/15/LOONG/"/>
-      <url>/2019/03/15/LOONG/</url>
-      
-        <content type="html"><![CDATA[<hr><pre><code>#include &lt;stdio.h&gt;int main(){} </code></pre><hr>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2019/03/15/hello-world/"/>
-      <url>/2019/03/15/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[数据库（四）：SQL基础与语句操作]]></title>
+    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库（三）：关系数据库]]></title>
+    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库（二）：数据模型与数据库模型]]></title>
+    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库（一）：简介]]></title>
+    <url>%2F2019%2F03%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Git操作（一）：Git安装与基础操作]]></title>
+    <url>%2F2019%2F03%2F17%2FGit%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9Agit%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[Git的安装Windows平台Linux平台Git工具 Git基础知识仓库（repository）分支的概念 Git基础操作建立一个本地仓库从网上下载一个仓库分支的创建、切换、删除与合并操作]]></content>
+      <categories>
+        <category>Git入门</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IEEE 754浮点数转换]]></title>
+    <url>%2F2019%2F03%2F17%2FIEEE-754%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[这里用了一下《深入理解计算机系统》中的几个习题来具体说明了一下 主要分为以下几个步骤： 1、转换为二进制2、写为IEEE 754表达格式3、求尾数、阶码、符号位4、机器码以及十六进制表示+1.75： 二进制表示：+1.11 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.110000..00（尾数） e-127 =0,e=127=0111 1111 (阶码) 符号：正数为0 十六进制：3FE00000H +19： 二进制表示：+0001 0011 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.0011..00（尾数） e-127 =4,e=131=1000 0011 (阶码) 符号：正数为0 十六进制：41980000H 258： 二进制表示：+1 0000 0010 IEEE 754表达形式：（-1）^s X 1.f X 2^(e-127), s = 0（符号位） 1.f = 1.0000 0010..00（尾数） e-127 =8,e=135=1000 0111 (阶码) 符号：正数为0 十六进制：43810000H 利用IEEE 754标准求下列加减法： 1）0.75 + （-65.25） 2）0.75 - （-65.25） 设 X = +0.75, Y =-65.25 [X]2 = +0.1100 机器码表示为：0 0111 1110 1000 …00 则阶码EX= 0111 1110 [Y]2 =- 1000 001.01 机器码表示为：1 1000 0101 0000 0101 0000…00 则阶码EY= 1000 0101 对阶后在进行对阶的时候：EX= 0111 1110 EY= 1000 0101 [EX- EY]补 = 0111 1110 + 0111 1011 （mod 256）= 1111 1001 (mod 256) = (-7)10 所以X的尾数需要右移7位，对阶后X的阶码移码为 1000 0101，故实际阶码也即尾数操作后需要右移的位数为：1000 0101 - 0111 1111 = 0000 0110 = 6。 尾数加减相加：-1.00000010 X 2^6 = (-64.50)10相减: +1.00001000 X2^6 = (66.00)10尾数的舍入处理尾数没有舍入 阶码溢出判断两次均没有出现阶码溢出的情况。 所以结果为： -64.50和66.00]]></content>
+  </entry>
 </search>
