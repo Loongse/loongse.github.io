@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-17T13:28:47.896Z</updated>
+  <updated>2019-03-18T14:27:59.702Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux + QEMU +busybox模拟ARM开发板</title>
+    <link href="http://yoursite.com/2019/03/18/Linux-QEMU-busybox%E6%A8%A1%E6%8B%9FARM%E5%BC%80%E5%8F%91%E6%9D%BF/"/>
+    <id>http://yoursite.com/2019/03/18/Linux-QEMU-busybox模拟ARM开发板/</id>
+    <published>2019-03-18T14:27:59.000Z</published>
+    <updated>2019-03-18T14:27:59.702Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux交叉编译链</title>
+    <link href="http://yoursite.com/2019/03/18/Linux%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE/"/>
+    <id>http://yoursite.com/2019/03/18/Linux交叉编译链/</id>
+    <published>2019-03-18T14:26:07.000Z</published>
+    <updated>2019-03-18T14:26:07.129Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LaTex + vs code环境配置</title>
+    <link href="http://yoursite.com/2019/03/18/LaTex-vs-code%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2019/03/18/LaTex-vs-code环境配置/</id>
+    <published>2019-03-18T14:22:40.000Z</published>
+    <updated>2019-03-18T14:22:40.500Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>浅析LinuxC语言的运行过程</title>
@@ -43,7 +85,7 @@
     <link href="http://yoursite.com/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%AD%E5%8F%A5%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2019/03/17/数据库（四）：SQL基础与语句操作/</id>
     <published>2019-03-17T10:39:06.000Z</published>
-    <updated>2019-03-17T13:13:07.335Z</updated>
+    <updated>2019-03-18T14:20:11.082Z</updated>
     
     <summary type="html">
     
@@ -90,8 +132,8 @@
   
   <entry>
     <title>数据库（一）：简介</title>
-    <link href="http://yoursite.com/2019/03/17/README/"/>
-    <id>http://yoursite.com/2019/03/17/README/</id>
+    <link href="http://yoursite.com/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2019/03/17/数据库（一）：简介/</id>
     <published>2019-03-17T10:35:22.000Z</published>
     <updated>2019-03-17T10:35:23.181Z</updated>
     
@@ -104,8 +146,8 @@
   
   <entry>
     <title>数据库（一）：简介</title>
-    <link href="http://yoursite.com/2019/03/17/%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
-    <id>http://yoursite.com/2019/03/17/数据库（一）：简介/</id>
+    <link href="http://yoursite.com/2019/03/17/README/"/>
+    <id>http://yoursite.com/2019/03/17/README/</id>
     <published>2019-03-17T10:35:22.000Z</published>
     <updated>2019-03-17T10:35:23.181Z</updated>
     

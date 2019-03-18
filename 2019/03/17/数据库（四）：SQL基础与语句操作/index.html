@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="不负初心">
 <meta property="og:description" content="SQL语言基础操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-17T13:13:07.335Z">
+<meta property="og:updated_time" content="2019-03-18T14:20:11.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库（四）：SQL基础与语句操作">
 <meta name="twitter:description" content="SQL语言基础操作">
@@ -407,7 +407,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  956
+                  1.7k
                 </span>
               
 
@@ -423,7 +423,7 @@ function setSidebarMarginTop (headerOffset) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -539,7 +539,37 @@ function setSidebarMarginTop (headerOffset) {
 </tr>
 </tbody>
 </table>
-<h6 id="表的创建与删除修改"><a href="#表的创建与删除修改" class="headerlink" title="表的创建与删除修改"></a>表的创建与删除修改</h6><h6 id="表的查询操作"><a href="#表的查询操作" class="headerlink" title="表的查询操作"></a>表的查询操作</h6><h6 id="表中数据的插入、更新、删除"><a href="#表中数据的插入、更新、删除" class="headerlink" title="表中数据的插入、更新、删除"></a>表中数据的插入、更新、删除</h6>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在数据库中，表是我们最熟悉的数据库对象，我们在定义一个个关系与存储数据时，也无可避免的使用表。因此，掌握表的使用可以说是熟悉数据库操作的基本前提，在使用表的时候，往往会涉及到表的创建、表的结构修改、表中数据插入更新删除等功能。（在实际运用过程中，对数据的更改是需要十分谨慎的。因此，表的删除相对来说用的也比较少）</p>
+<h6 id="表的创建与删除修改"><a href="#表的创建与删除修改" class="headerlink" title="表的创建与删除修改"></a>表的创建与删除修改</h6><ul>
+<li><p>表的创建:<br>&nbsp;&nbsp;&nbsp;&nbsp;在下面的代码中我们创建了两个表，分别是学院信息表与班级信息表，其中学院信息表有两个列，分别是col_id和col_name，对两个列都作了非空约束，定义了col_id为主键；在班级信息表中，使用了表级约束来定义表的主键，这样做的好处是可以增加SQL语句的可读性，注意到在定义班级信息表的时候，使用了外键约束进行定义：==col_id VARCHAR ( 2 ) FOREIGN KEY REFERENCES College ( col_id ) ON UPDATE CASCADE ON DELETE CASCADE #003080==<br>&nbsp;&nbsp;&nbsp;&nbsp;后面的<em>ON UPDATE CASCADE ON DELETE CASCADE</em>是数据库外键定义的一个可选项，用来设置当主键表中的被参考列的数据发生变化时，外键表中响应字段的变换规则的。update 则是主键表中被参考字段的值更新，delete是指在主键表中删除一条记录：==on update== 和 ==on delete== 后面可以跟的词语有四个==no action== ， ==set null== ， ==set default== ，==cascade==。</p>
+<p>  no action 表示 不做任何操作<br>  set null 表示在外键表中将相应字段设置为null<br>  set default 表示设置为默认值(restrict)<br>  cascade 表示级联操作，就是说，如果主键表中被参考字段更新，外键表中也更新，主键表中的记录被   删除，外键表中改行也相应删除</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> College (</span><br><span class="line">	col_id <span class="built_in">VARCHAR</span> ( <span class="number">2</span> ) <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	col_name <span class="built_in">VARCHAR</span> ( <span class="number">40</span> ) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">Class</span> (</span><br><span class="line">	cla_id <span class="built_in">VARCHAR</span> ( <span class="number">6</span> ),</span><br><span class="line">	cla_name <span class="built_in">VARCHAR</span> ( <span class="number">40</span> ),</span><br><span class="line">	col_id <span class="built_in">VARCHAR</span> ( <span class="number">2</span> ) <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> <span class="keyword">REFERENCES</span> College ( col_id ) </span><br><span class="line">	<span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">	tuition <span class="built_in">SMALLINT</span>,</span><br><span class="line">	<span class="keyword">CONSTRAINT</span> pk_Class_cla_id PRIMARY <span class="keyword">KEY</span> ( cla_id ) </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>表的删除：<br>&nbsp;&nbsp;&nbsp;&nbsp;使用drop (from) table  ***即可对指定表进行删除，但此操作有可能会对数据造成不可估量的损失，因此需要慎用。</li>
+<li>表结构修改：<br>&nbsp;&nbsp;&nbsp;&nbsp;在实际使用数据库进行数据的存储时，我们往往不能一次性就把表的结构完整且合理的定义，alter就对我们修改表结构提供了很大的帮助。如下对刚创建的学院信息表进行表结构的修改，为学院信息表中的col_name列添加唯一性约束：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> col_name <span class="built_in">VARCHAR</span> ( <span class="number">40</span> ) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">UNIQUE</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>为表添加字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">ADD</span> telphone <span class="built_in">VARCHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为表增加约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>(telphone)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> telphone <span class="built_in">VARCHAR</span>(<span class="number">11</span>) <span class="keyword">UNIQUE</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> telphone</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> College <span class="keyword">DROP</span> [约束名称]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="表的查询操作"><a href="#表的查询操作" class="headerlink" title="表的查询操作"></a>表的查询操作</h6><h6 id="表中数据的插入、更新、删除"><a href="#表中数据的插入、更新、删除" class="headerlink" title="表中数据的插入、更新、删除"></a>表中数据的插入、更新、删除</h6>
       
     </div>
     
@@ -728,7 +758,7 @@ function setSidebarMarginTop (headerOffset) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -844,7 +874,7 @@ function setSidebarMarginTop (headerOffset) {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.8k</span>
+    <span title="Site words total count">6.6k</span>
   
 </div>
 
