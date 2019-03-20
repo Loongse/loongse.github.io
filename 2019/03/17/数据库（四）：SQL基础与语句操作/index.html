@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -89,7 +96,7 @@
 <meta property="og:site_name" content="不负初心">
 <meta property="og:description" content="SQL语言基础操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T14:20:11.082Z">
+<meta property="og:updated_time" content="2019-03-18T14:33:46.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库（四）：SQL基础与语句操作">
 <meta name="twitter:description" content="SQL语言基础操作">
@@ -501,7 +508,7 @@ function setSidebarMarginTop (headerOffset) {
 <li>二进制字符串类型</li>
 </ul>
 <hr>
-<h3 id="SQL基础语法使用"><a href="#SQL基础语法使用" class="headerlink" title="SQL基础语法使用"></a>SQL基础语法使用</h3><h4 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在关系数据模型中，一般将数据划分为三个层次，外模式–&gt;视图，模式–&gt;表，内模式–&gt;索引，在这三个模式中，模式与另外两个建立起两层联系，方便了数据库的管理与存储。另外一个数据库对象——架构，则相当于容器，可以在其下面创建表、视图等数据库对象。如果把数据库系统比喻成操作系统，那么架构则对应于目录，存放的其他对象就好比一个个文件。<br>| 数据库对象 | 创建          | 修改        | 删除        |<br>| ———- | ————- | ———– | ———– |<br>| 架构       | CREATE SCHEMA |    架构不可修改         | DROP SCHEMA |<br>| 表         | CREATE TABLE  | ALTER TABLE | DROP TABLE  |<br>| 视图       | CREATE VIEW   | ALTER VIEW  | DROP VIEW   |<br>| 索引       | CREATE INDEX  | ALTER INDEX | DROP INDEX  |</p>
+<h3 id="SQL基础语法使用"><a href="#SQL基础语法使用" class="headerlink" title="SQL基础语法使用"></a>SQL基础语法使用</h3><h4 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在关系数据模型中，一般将数据划分为三个层次，外模式–&gt;视图，模式–&gt;表，内模式–&gt;索引，在这三个模式中，模式与另外两个建立起两层联系，方便了数据库的管理与存储。另外一个数据库对象——架构，则相当于容器，可以在其下面创建表、视图等数据库对象。如果把数据库系统比喻成操作系统，那么架构则对应于目录，存放的其他对象就好比一个个文件。<br>| 数据库对象 | 创建          | 修改        | 删除        |<br>| ———- | ————- | —————– | ———– |<br>| 架构       | CREATE SCHEMA |             | DROP SCHEMA |<br>| 表         | CREATE TABLE  | ALTER TABLE | DROP TABLE  |<br>| 视图       | CREATE VIEW   | ALTER VIEW  | DROP VIEW   |<br>| 索引       | CREATE INDEX  | ALTER INDEX | DROP INDEX  |</p>
 <h5 id="架构的定义与删除"><a href="#架构的定义与删除" class="headerlink" title="架构的定义与删除"></a>架构的定义与删除</h5><h5 id="基本表操作"><a href="#基本表操作" class="headerlink" title="基本表操作"></a>基本表操作</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;表的完整性约束：一般分为<strong>列级完整性约束</strong>和<strong>表级完整性约束</strong>，使用完整性约束可以增加数据的约束与数据之间的关联。</p>
 <table>
 <thead>
@@ -860,7 +867,8 @@ function setSidebarMarginTop (headerOffset) {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
